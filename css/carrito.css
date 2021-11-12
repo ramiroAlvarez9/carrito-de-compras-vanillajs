@@ -1,0 +1,80 @@
+html{
+    font-family: 'Oswald', sans-serif;
+}
+
+.header{
+    width: 100%;
+    height:12vh;
+    border-bottom: solid 1px rgb(185, 185, 185);
+    box-shadow: 2px 2px 2px 1px rgba(110, 110, 110, 0.2);
+    font-size:10vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+.header >.header__title{
+    margin-top:1vh;
+}
+.header > .header__img{
+    margin-bottom: 2vh;
+}
+.header > .header__carrito {
+    position:relative;
+    z-index:1;
+}
+.header > .header__container {
+    display:inherit;
+    width:85vw;
+    max-width: 530px;
+    justify-content: space-between;
+}.main{
+    margin-top:2%;
+    border: solid 1px black;
+}
+.productos__container{
+    border-bottom: solid 1px black;
+}
+.productos__container--nombre{
+    margin-bottom:1%;
+    font-size: 20px;
+}
+.productos__container--precio{
+    margin-bottom:1%;
+    font-size: 20px;
+}
+.productos__container--pagar--button{
+    background-color: white;
+    margin-top: 4vh;
+    width:40%;
+    height:10%;
+    border: solid 1px;
+    font-weight: 900;
+}
+.productos__container--delete{
+    color: gray;
+}
+
+@media (min-width: 1200px) {
+
+   .productos__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .header{
+        flex-direction: column;
+        height:20vh;
+    }
+    .header__container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;  
+    }
+    .productos__container--pagar{
+        display: flex;
+        justify-content: center;
+
+    }
+}

@@ -1,0 +1,155 @@
+html{
+    font-family: 'Oswald', sans-serif;
+}
+.header{
+    width: 100%;
+    height:12vh;
+    border-bottom: solid 1px rgb(185, 185, 185);
+    box-shadow: 2px 2px 2px 1px rgba(110, 110, 110, 0.2);
+    font-size:10vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position:fixed;
+    z-index: 1;
+    background-color: white;
+}
+.header >.header__title{
+    margin-top:1vh;
+    font-family: 'Oswald', sans-serif;
+}
+.header > .header__img{
+    margin-bottom: 2vh;
+}
+.header > .header__carrito {
+    position:relative;
+    z-index:1;
+}
+.header > .header__container {
+    display:inherit;
+    width:85vw;
+    max-width: 530px;
+    justify-content: space-between;
+}
+
+
+.main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.main__card--img{
+    width: 50%;
+    height:40%;
+    max-height: 1080px;
+    max-width: 220px;
+    
+}
+.main__card{
+    border: solid 1px rgba(114, 114, 114, 0.651);
+    border-radius: 2px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width:85vw;
+    height: 60vh;
+    max-width: 530px;
+    margin-top: 15vh;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px 3px 3px rgba(36, 36, 36, 0.274);
+}
+.main__card >.main__card--element{
+    margin-bottom: 1vh;
+
+
+}.main__card> .main__card--p{
+    text-align: center;
+    width:70%;
+}.main__card >.main__card--button{
+    background-color: white;
+    margin-top: 4vh;
+    width:70%;
+    height:10%;
+    border: solid 1px;
+    font-weight: 900;
+}
+
+/* Carrito.html*/
+
+#main{
+    height:100vh;
+    margin-bottom:27%;
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 20% 20% 20%; 
+    gap: 0px 0px; 
+    
+}
+.productos__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 1px black;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 5%;
+}.productos__container--nombre{
+
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+
+}
+.productos__container--precio{
+
+    width: 90%;
+    margin-left: 5%;
+
+}
+.productos__container--delete{
+    
+    height: 20%;
+    width:45%;   
+    margin-top: 2%;
+    margin-left: 5%;
+    color: rgb(105, 105, 105);
+}
+.productos__container--delete--button{
+
+    background-color: white;
+    width:70%;
+    height:10%;
+    border: solid 1px;
+    font-weight: 900;
+    float: left;
+}
+
+@media (min-width: 1200px) {
+    
+    body{
+        display: grid; 
+        grid-template-columns: 33% 33% 33%;
+        gap: 10px 10px; 
+    }
+    .header{
+        height:20vh;
+    }
+    .header__container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;   
+    }
+    .main__card{
+        margin-top:25vh;
+    }
+    
+
+    
+   
+}   
+
