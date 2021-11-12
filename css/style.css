@@ -35,9 +35,9 @@ html{
 }
 
 
-.main{
-    display:flex;
-    justify-content: center;
+.main__container{
+    display: flex;
+    flex-direction: column;
     align-items: center;
 
 }
@@ -130,12 +130,6 @@ html{
 }
 
 @media (min-width: 1200px) {
-    
-    body{
-        display: grid; 
-        grid-template-columns: 33% 33% 33%;
-        gap: 10px 10px; 
-    }
     .header{
         height:20vh;
     }
@@ -148,8 +142,9 @@ html{
         margin-top:25vh;
     }
     
+    .main__container{
+        flex-direction: row;
+    }
 
-    
-   
 }   
 
