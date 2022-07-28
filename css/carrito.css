@@ -55,6 +55,9 @@ html{
 .productos__container--delete{
     color: gray;
 }
+.header__carrito{
+    z-index: 2;
+}
 
 @media (min-width: 1200px) {
 

@@ -1,8 +1,8 @@
-let productosEnLocalStorage =JSON.parse(localStorage.getItem('productos'));
+let productosEnLocalStorage =JSON.parse(localStorage.getItem('productos')) ;
 
 for (let i = 0 ; i < productosEnLocalStorage.length;i++){
 
-    $(".main").append(  `
+    $(".main").append( `
     <div class ="productos__container">
             <h6 class ="productos__container--nombre">${productosEnLocalStorage[i].productoNombre}</h6>
                 <div class ="productos__container--precio" >${productosEnLocalStorage[i].productoPrecio}$</div>
