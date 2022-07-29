@@ -1,10 +1,7 @@
 let productosEnLocalStorage = JSON.parse(localStorage.getItem('productos'));
 
-
 /*Toma el largo del array que se encuentra en localStorage, y devuelve el numero del mismo.*/
-
 const cantidadDeComprasDelCarrito = () => JSON.parse(localStorage.getItem('productos')).length;
-
 
 function actualizarContadorDeCarritoDeCompras() {
 
@@ -39,7 +36,6 @@ function mostrarProductosAgregadosEnPantalla() {
         </div>`
         )
 
-        
         actualizarContadorDeCarritoDeCompras()
 
         $(`.deleteButton${i}`).click(() => {
