@@ -6,34 +6,6 @@
 */
 $.get("./js/productos.json", data => {
 
-    function guardarProductosEnCarrito(i) {
-
-        /*genera un evento en cada boton de los productos */
-
-        $(`.button${i}`).click(() => {
-
-            let productosObject = {
-                productoNombre: data.productos[i].nombre,
-                productoPrecio: data.productos[i].precio
-            }
-
-            if (localStorage.getItem('productos') === null) {
-                let productosArray = []
-                productosArray.push(productosObject)
-                localStorage.setItem('productos', JSON.stringify(productosArray))
-            }
-            else {
-                let productosEnLocalStorage = JSON.parse(localStorage.getItem('productos'));
-                productosEnLocalStorage.push(productosObject);
-                localStorage.setItem('productos', JSON.stringify(productosEnLocalStorage))
-            }
-
-            mostrarMensajeDeProductoAgregado(productosObject.productoNombre)
-            console.log(productosObject.productoNombre)
-        })
-
-    }
-
     function generarProductos() {
 
         /*Crea los productos en el DOM*/
@@ -57,13 +29,44 @@ $.get("./js/productos.json", data => {
 
             guardarProductosEnCarrito(i)
 
-            actualizarMensajeDeProductoAgregado(data.productos[i].nombre)
+            actualizarMensajeDeProductoAgregado( data.productos[i].nombre )
         }
     }
-
-    //muestra el mensaje de producto agregado en cada uno de los mismos
     
-    const mostrarMensajeDeProductoAgregado = nombreDelProducto => $(`.main__card--advise-${nombreDelProducto}`).css("visibility", "visible");  
+    function guardarProductosEnCarrito(i) {
+        /*
+        
+            Genera un evento en cada boton de los productos 
+            Cuando se ejecuta el evento, se guarda el producto en el localStorage, y se muestra un mensaje de "producto agregado al carrito".
+        
+        */
+        
+        $(`.button${i}`).click(() => {
+            let productosObject = {
+                productoNombre: data.productos[i].nombre,
+                productoPrecio: data.productos[i].precio
+            }
+            if (localStorage.getItem('productos') === null) {
+                let productosArray = []
+                productosArray.push(productosObject)
+                localStorage.setItem('productos', JSON.stringify(productosArray))
+            }
+            else {
+                let productosEnLocalStorage = JSON.parse(localStorage.getItem('productos'));
+                productosEnLocalStorage.push(productosObject);
+                localStorage.setItem('productos', JSON.stringify(productosEnLocalStorage))
+            }
+            
+            mostrarMensajeDeProductoAgregado(productosObject.productoNombre)
+           
+        })
+    }
+
+    
+    
+    const mostrarMensajeDeProductoAgregado = nombreDelProducto => 
+        /* Muestra el mensaje de producto agregado en cada uno de los mismos */    
+        $(`.main__card--advise-${nombreDelProducto}`).css("visibility", "visible");  
 
 
     function actualizarMensajeDeProductoAgregado(nombreDelProducto) {
@@ -78,8 +81,10 @@ $.get("./js/productos.json", data => {
 
         });
     }
+    
 
     generarProductos()
+
 
 }).fail(() => {
 

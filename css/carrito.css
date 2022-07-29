@@ -44,11 +44,13 @@ html{
     margin-bottom:1%;
     font-size: 20px;
 }
+
 .productos__container--pagar--button{
+    display: block;
     background-color: white;
     margin-top: 4vh;
     width:40%;
-    height:10%;
+    height: 10vh;
     border: solid 1px;
     font-weight: 900;
 }
