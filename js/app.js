@@ -29,10 +29,11 @@ $.get("./js/productos.json", data => {
 
             guardarProductosEnCarrito(i)
 
-            actualizarMensajeDeProductoAgregado( data.productos[i].nombre )
+            actualizarMensajeDeProductoAgregadoYContadorDeCarrito(data.productos[i].nombre)
         }
     }
-    
+
+
     function guardarProductosEnCarrito(i) {
         /*
         
@@ -40,7 +41,7 @@ $.get("./js/productos.json", data => {
             Cuando se ejecuta el evento, se guarda el producto en el localStorage, y se muestra un mensaje de "producto agregado al carrito".
         
         */
-        
+
         $(`.button${i}`).click(() => {
             let productosObject = {
                 productoNombre: data.productos[i].nombre,
@@ -56,32 +57,57 @@ $.get("./js/productos.json", data => {
                 productosEnLocalStorage.push(productosObject);
                 localStorage.setItem('productos', JSON.stringify(productosEnLocalStorage))
             }
-            
+
+
             mostrarMensajeDeProductoAgregado(productosObject.productoNombre)
-           
+
+            //en cada click, actualiza el contador del carrito]
+
+            actualizarContadorDeCarritoDeCompras()
+
         })
     }
 
+    /* Muestra el mensaje de producto agregado en cada uno de los mismos */
+    const mostrarMensajeDeProductoAgregado = nombreDelProducto => $(`.main__card--advise-${nombreDelProducto}`).css("visibility", "visible");
     
-    
-    const mostrarMensajeDeProductoAgregado = nombreDelProducto => 
-        /* Muestra el mensaje de producto agregado en cada uno de los mismos */    
-        $(`.main__card--advise-${nombreDelProducto}`).css("visibility", "visible");  
+    /*Toma el largo del array que se encuentra enlocalStorage, y devuelve el numero del mismo.*/
+    const cantidadDeComprasDelCarrito = () => JSON.parse(localStorage.getItem('productos')).length;
 
 
-    function actualizarMensajeDeProductoAgregado(nombreDelProducto) {
-        
+    function actualizarContadorDeCarritoDeCompras() {
+
+        /* Muestra en el DOM la cantidad de productos agregados al carrito. */
+
+        if(JSON.parse(localStorage.getItem('productos')).length === 0 ) {
+            
+            $(".header__carritoCounterLength").css("visibility", "hidden");
+
+        } else {
+
+            $(".header__carritoCounterLength").css("visibility", "visible");
+
+            $(".header__carritoCounterLength").text(cantidadDeComprasDelCarrito())
+
+        }
+    }
+
+    function actualizarMensajeDeProductoAgregadoYContadorDeCarrito(nombreDelProducto) {
+
         /*Recorre la lista de productos en localStorage, y muestra un mensaje de " Producto agregado al carrito " , si es que este mismo(su nombre) existe dentro de la base de datos del navegador */
 
         let arrayDeProductosEnLocalStorage = JSON.parse(localStorage.getItem('productos'))
 
         arrayDeProductosEnLocalStorage.forEach(elemento => {
 
-            elemento.productoNombre === nombreDelProducto ? $(`.main__card--advise-${nombreDelProducto}`).css("visibility", "visible") : null ;
+            elemento.productoNombre === nombreDelProducto ? $(`.main__card--advise-${nombreDelProducto}`).css("visibility", "visible") : null;
 
         });
+
+        actualizarContadorDeCarritoDeCompras()
+
     }
-    
+
 
     generarProductos()
 

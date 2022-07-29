@@ -57,8 +57,39 @@ html{
 .productos__container--delete{
     color: gray;
 }
-.header__carrito{
+.header__carrito {
+
+    display: flex;
     z-index: 2;
+    width: 5%;
+    text-decoration: none;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.header__carrito {
+
+    display: flex;
+    z-index: 2;
+    width: 5%;
+    text-decoration: none;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.header__carrito {
+
+    display: flex;
+    z-index: 2;
+    width: 5%;
+    text-decoration: none;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.header__carritoCounterLength {
+    display:inline-block;
+    text-decoration: none;
+    font-size: 12px;
+    color: black;
 }
 
 @media (min-width: 1200px) {
