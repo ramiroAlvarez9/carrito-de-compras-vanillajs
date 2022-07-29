@@ -39,6 +39,7 @@ function mostrarProductosAgregadosEnPantalla() {
         </div>`
         )
 
+        
         actualizarContadorDeCarritoDeCompras()
 
         $(`.deleteButton${i}`).click(() => {
