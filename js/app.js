@@ -6,7 +6,7 @@
 */
 $.get("./js/productos.json", data => {
 
-    function guardarProductosEnCarrito(i){
+    function guardarProductosEnCarrito(i) {
 
         /*genera un evento en cada boton de los productos */
 
@@ -27,12 +27,14 @@ $.get("./js/productos.json", data => {
                 productosEnLocalStorage.push(productosObject);
                 localStorage.setItem('productos', JSON.stringify(productosEnLocalStorage))
             }
-            mostrarMensajeDeProductoAgregado(productosObject.productoNombre, i)
+
+            mostrarMensajeDeProductoAgregado(productosObject.productoNombre)
+            console.log(productosObject.productoNombre)
         })
 
     }
 
-    function generarProductos () {
+    function generarProductos() {
 
         /*Crea los productos en el DOM*/
 
@@ -48,36 +50,36 @@ $.get("./js/productos.json", data => {
                     <h3 class = "main__card--h3 main__card--element">${data.productos[i].precio}</h3>
                     <button class = "main__card--button main__card--element button${i}">AGREGAR AL CARRITO</button>
                     
-                    <span class = "main__card--advise main__card--advise${i}"> Producto agregado al carrito </span>
+                    <span class = "main__card--advise main__card--advise-${data.productos[i].nombre}"> Producto agregado al carrito </span>
 
                 </div>`
             )
 
             guardarProductosEnCarrito(i)
 
-        
+            actualizarMensajeDeProductoAgregado(data.productos[i].nombre)
         }
     }
 
-    /* Indica si los elementos son iguales, o no. */
-    const sonCoincidentes = ( elemento1,elemento2 ) => elemento1 === elemento2;
+    //muestra el mensaje de producto agregado en cada uno de los mismos
+    
+    const mostrarMensajeDeProductoAgregado = nombreDelProducto => $(`.main__card--advise-${nombreDelProducto}`).css("visibility", "visible");  
 
-    function mostrarMensajeDeProductoAgregado( nombreDelProducto, i) {
 
+    function actualizarMensajeDeProductoAgregado(nombreDelProducto) {
+        
         /*Recorre la lista de productos en localStorage, y muestra un mensaje de " Producto agregado al carrito " , si es que este mismo(su nombre) existe dentro de la base de datos del navegador */
-        
+
         let arrayDeProductosEnLocalStorage = JSON.parse(localStorage.getItem('productos'))
-        
-        arrayDeProductosEnLocalStorage.forEach( elemento => {
-             
-            sonCoincidentes(elemento.productoNombre, nombreDelProducto) ? $(`.main__card--advise${i}`).css("visibility", "visible") : null ; 
+
+        arrayDeProductosEnLocalStorage.forEach(elemento => {
+
+            elemento.productoNombre === nombreDelProducto ? $(`.main__card--advise-${nombreDelProducto}`).css("visibility", "visible") : null ;
 
         });
-
     }
 
     generarProductos()
-    
 
 }).fail(() => {
 
