@@ -40,6 +40,14 @@ html{
     margin-bottom:1%;
     font-size: 20px;
 }
+
+
+.totalAPagar__container{
+    display:flex;
+    align-items: center;
+    height: 5vh;
+}
+
 .productos__container--precio{
     margin-bottom:1%;
     font-size: 20px;
@@ -48,12 +56,12 @@ html{
 .productos__container--pagar--button{
     display: block;
     background-color: white;
-    margin-top: 4vh;
     width:40%;
     height: 10vh;
     border: solid 1px;
     font-weight: 900;
     cursor: pointer;
+
 }
 .productos__container--delete{
     color: gray;
@@ -77,13 +85,13 @@ html{
     justify-content: space-between;
 }
 .header__carrito {
-
     display: flex;
     z-index: 2;
     width: 5%;
     text-decoration: none;
     align-items: flex-end;
     justify-content: space-between;
+
 }
 
 .header__carritoCounterLength {
@@ -112,6 +120,8 @@ html{
     .productos__container--pagar{
         display: flex;
         justify-content: center;
-
+    }
+    .totalAPagar__container{
+        justify-content: center;        
     }
 }

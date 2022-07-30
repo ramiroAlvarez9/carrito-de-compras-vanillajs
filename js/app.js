@@ -39,7 +39,6 @@ $.get("./js/productos.json", data => {
         
             Genera un evento en cada boton de los productos 
             Cuando se ejecuta el evento, se guarda el producto en el localStorage, y se muestra un mensaje de "producto agregado al carrito".
-        
         */
 
         $(`.button${i}`).click(() => {
